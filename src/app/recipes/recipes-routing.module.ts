@@ -7,7 +7,7 @@ import {RecipeDetailComponent} from "./recipe-detail/recipe-detail.component";
 import {NgModule} from "@angular/core";
 
 const recipesRoutes: Routes = [
-  {path: 'recipes', component: RecipesComponent, children: [
+  {path: '', component: RecipesComponent, children: [
     {path: '', component: RecipeStartComponent},
     {path: 'new', component: RecipeEditComponent, canActivate: [AuthGuard]},
     {path: ':id', component: RecipeDetailComponent},  // Be careful how you order routes, the router tries to parse them
@@ -20,6 +20,8 @@ const recipesRoutes: Routes = [
   imports: [
     RouterModule.forChild(recipesRoutes) // You need to use forChild instead of forRoot, forRoot can only be used once.
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard] // This module is lazy loaded so by providing the service here you're using a child injector
+    // and saving on performance.
 })
 export class RecipesRoutingModule {}

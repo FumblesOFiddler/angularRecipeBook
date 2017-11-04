@@ -1,5 +1,4 @@
 import {Ingredient} from "../shared/ingredient.model";
-import {EventEmitter} from "@angular/core";
 import {Subject} from "rxjs/Subject";
 
 export class ShoppingListService {
@@ -14,9 +13,7 @@ export class ShoppingListService {
     return this.ingredients[index];
   }
 
-  getIngredients() {
-    return this.ingredients.slice(); // Returns a copy of the array
-  }
+
   addIngredient(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
     this.ingredientsChanged.next(this.ingredients.slice());

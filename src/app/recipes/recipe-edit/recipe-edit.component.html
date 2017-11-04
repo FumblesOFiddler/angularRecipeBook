@@ -50,7 +50,7 @@
         <div class="col-xs-12" formArrayName="ingredients">
           <!--The error in tbe below ngFor isn't actually an error, it happens because you have forms and reactive forms-->
           <div class="row"
-               *ngFor="let ctrls of recipeForm.get('ingredients').controls; let i=index"
+               *ngFor="let ctrls of formArray.controls; let i=index"
                [formGroupName]="i" style="margin-top: 10px">
             <div class="col-xs-8">
               <input type="text" class="form-control" formControlName="name">
